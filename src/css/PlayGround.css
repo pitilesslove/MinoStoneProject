@@ -1,0 +1,44 @@
+#playground {
+    width: 850px;
+    height: 560px;
+    border: 1px solid #000;
+}
+
+.ground {
+    height: 50%;
+}
+
+#enemy_ground {
+    background-color: rgb(204, 165, 193);
+}
+
+#my_ground {
+    background-color: rgb(132, 218, 158);
+}
+
+.batch_ground {
+    display: flex;
+    width: 100%;
+    height: 100px;
+    margin-top: 70px;
+    border: 1px solid #000;
+    
+}
+
+#turn_area {
+    position: absolute;
+    right: 0;
+    text-align: center;
+    
+
+}
+
+.turn_button {
+    position: absolute;
+    width : 70px;
+    height: 30px;
+    right: 0;
+    border: 2px solid #73AD21;
+    font-family: 'DiabloFont';
+    vertical-align: middle;
+}
