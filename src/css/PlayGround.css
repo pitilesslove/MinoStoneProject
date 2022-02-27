@@ -1,5 +1,4 @@
 #playground {
-    width: 850px;
     height: 560px;
     border: 1px solid #000;
 }
@@ -22,7 +21,8 @@
     height: 100px;
     margin-top: 70px;
     border: 1px solid #000;
-    
+    justify-content: center;
+    align-items: center;
 }
 
 #turn_area {
@@ -38,7 +38,6 @@
     width : 70px;
     height: 30px;
     right: 0;
-    border: 2px solid #73AD21;
     font-family: 'DiabloFont';
     vertical-align: middle;
 }
