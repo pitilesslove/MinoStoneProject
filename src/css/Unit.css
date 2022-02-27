@@ -5,6 +5,14 @@
     height: 60px;
 }
 
+.unit:hover {
+    outline: 1px solid black;
+}
+
+.unit.selected {
+    outline: 1px solid tomato;
+}
+
 .body_circle {
     position: relative;
     margin: 0 auto;
