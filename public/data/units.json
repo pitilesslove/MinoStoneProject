@@ -3,54 +3,64 @@
         {
             "id": 1,
             "attack": 5,
-            "life": 6
+            "life": 6,
+            "selected": false
         },
         {
             "id": 2,
             "attack": 3,
-            "life": 13
+            "life": 13,
+            "selected": false
         },
         {
             "id": 3,
             "attack": 2,
-            "life": 7
+            "life": 7,
+            "selected": false
         },
         {
             "id": 4,
             "attack": 4,
-            "life": 3
+            "life": 3,
+            "selected": false
         },
         {
             "id": 5,
             "attack": 2,
-            "life": 4
+            "life": 4,
+            "selected": false
         }
     ],
     "enemy_units": [
         {
             "id": 1,
             "attack": 32,
-            "life": 60
+            "life": 60,
+            "selected": false
         },
         {
             "id": 2,
             "attack": 25,
-            "life": 53
+            "life": 53,
+            "selected": false
         },
         {
             "id": 3,
             "attack": 24,
-            "life": 70
+            "life": 70,
+            "selected": false
         },
         {
             "id": 4,
             "attack": 44,
-            "life": 65
+            "life": 65,
+            "selected": false
         },
         {
             "id": 5,
             "attack": 23,
-            "life": 94
+            "life": 94,
+            "selected": false
         }
     ]
 }

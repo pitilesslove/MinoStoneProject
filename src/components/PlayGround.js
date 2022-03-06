@@ -22,6 +22,22 @@ export default function PlayGround() {
       })
   }, []);
 
+  // 선택에 대한 이벤트 콜백
+  useEffect(() => {
+    console.log("this is called!");
+    var _myUnits = [];
+    my_units.map(unit => {
+      console.log(unit);
+      if (unit.id === selected_unit.id && selected_unit.selected === true) {
+        unit.selected = true;
+      } else {
+        unit.selected = false;
+      }
+      _myUnits.push(unit);
+    });
+    setMyUnits(_myUnits);
+  }, [selected_unit]);
+
 
   const enemyUnits = enemy_units.map(unit => {
     console.log("unit");
@@ -39,6 +55,7 @@ export default function PlayGround() {
       id={unit.id}
       attack={unit.attack}
       life={unit.life}
+      selected={unit.selected}
     />
   })
 

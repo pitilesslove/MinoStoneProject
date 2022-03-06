@@ -8,24 +8,25 @@ export default function Unit(props) {
   var id = props.id;
   var attack = props.attack;
   var life = props.life;
-  const [isActive, setActive] = useState(false);
+  var isSelected = props.selected;
+  const [isActive, setActive] = useState(props.selected ? true : false);
   const dispatch = useDispatch();
 
   // const { value } = useSelector(state => state.value)
   // const { count } = useSelector(state => state.count)
 
   const selectUnit = () => {
-    var _isActive = !isActive;
-    console.log("select Unit", id);
-    if (_isActive) {
-      dispatch(selectUnitAction(props));
-    }
-    setActive(_isActive);
+    isSelected = !isSelected;
+    console.log("select Unit", id, isSelected);
+    var obj = Object.assign({}, props);
+    obj.selected = isSelected;
+    console.log(obj);
+    dispatch(selectUnitAction(obj));
   }
 
   return (
     <div
-      className={isActive ? 'unit selected' : "unit"}
+      className={isSelected ? 'unit selected' : "unit"}
       onClick={function (_id, event) {
         selectUnit(_id)
       }.bind(this, id)}
