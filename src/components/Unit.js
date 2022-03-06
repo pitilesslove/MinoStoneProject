@@ -1,5 +1,7 @@
 import '../css/Unit.css';
 import React, { Component, useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { selectUnitAction } from '../actions';
 
 export default function Unit(props) {
 
@@ -7,10 +9,18 @@ export default function Unit(props) {
   var attack = props.attack;
   var life = props.life;
   const [isActive, setActive] = useState(false);
+  const dispatch = useDispatch();
 
-  const selectUnit = (_id) => {
-    console.log("select Unit", _id);
-    setActive(!isActive);
+  // const { value } = useSelector(state => state.value)
+  // const { count } = useSelector(state => state.count)
+
+  const selectUnit = () => {
+    var _isActive = !isActive;
+    console.log("select Unit", id);
+    if (_isActive) {
+      dispatch(selectUnitAction(props));
+    }
+    setActive(_isActive);
   }
 
   return (

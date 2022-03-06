@@ -1,12 +1,17 @@
 import '../css/common.css';
 import '../css/PlayGround.css';
 import Unit from './Unit.js'
-import React, { Component, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 export default function PlayGround() {
 
+  // const [selected_unit, setSelectedUnit] = useState();
   const [enemy_units, setEnemyUnits] = useState([]);
   const [my_units, setMyUnits] = useState([]);
+
+  const selected_unit = useSelector(state => state.unitReducer.payload);
+  console.log("selected_unit : ", selected_unit);
 
   useEffect(() => {
     fetch("/data/units.json")
@@ -17,7 +22,9 @@ export default function PlayGround() {
       })
   }, []);
 
+
   const enemyUnits = enemy_units.map(unit => {
+    console.log("unit");
     return <Unit
       key={unit.id}
       id={unit.id}
@@ -42,7 +49,7 @@ export default function PlayGround() {
   return (
     <div id="playground">
       <div id="enemy_ground" className="ground">
-        <span>적의 공간 (Enemy's ground)</span>
+        <span>테스트 123</span>
         <div id="enemy_batch" className="batch_ground">
           {enemyUnits}
         </div>
