@@ -1,0 +1,10 @@
+@import 'common.css';
+
+.Title{
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 50%;
+	height: 70px;
+	border: 2px solid black;
+}

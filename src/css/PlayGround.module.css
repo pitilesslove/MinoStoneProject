@@ -1,3 +1,5 @@
+@import 'common.css';
+
 #playground {
     height: 560px;
     border: 1px solid #000;

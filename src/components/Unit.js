@@ -1,4 +1,4 @@
-import '../css/Unit.css';
+import styles from '../css/Unit.module.css';
 import React, { Component, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { selectUnitAction } from '../actions';
@@ -23,27 +23,28 @@ export default function Unit(props) {
     console.log(obj);
     dispatch(selectUnitAction(obj));
   }
-
   return (
     <div
-      className={isSelected ? 'unit selected' : "unit"}
-      onClick={function (_id, event) {
-        selectUnit(_id)
-      }.bind(this, id)}
+      className={isSelected ? `${styles.unit} ${styles.selected}` : styles.unit}
+      onClick={
+        function (_id, event) {
+          selectUnit(_id)
+        }.bind(this, id)
+      }
     >
-      <div className="body_circle">
-        <div className="attack_circle_wrapper">
-          <div className="attack_circle">
-            <span className="value">{attack}</span>
+      <div className={styles.body_circle}>
+        <div className={styles.attack_circle_wrapper}>
+          <div className={styles.attack_circle}>
+            <span className={styles.value}>{attack}</span>
           </div>
         </div>
-        <div className="life_circle_wrapper">
-          <div className="life_circle">
-            <span className="value">{life}</span>
+        <div className={styles.life_circle_wrapper}>
+          <div className={styles.life_circle}>
+            <span className={styles.value}>{life}</span>
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 
 }

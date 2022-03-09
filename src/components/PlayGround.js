@@ -1,8 +1,8 @@
-import '../css/common.css';
-import '../css/PlayGround.css';
-import Unit from './Unit.js'
+import styles from '../css/PlayGround.module.css';
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import Unit from './Unit'
+import SkillWindow from './SkillWindow';
 
 export default function PlayGround() {
 
@@ -24,7 +24,6 @@ export default function PlayGround() {
 
   // 선택에 대한 이벤트 콜백
   useEffect(() => {
-    console.log("this is called!");
     var _myUnits = [];
     my_units.map(unit => {
       console.log(unit);
@@ -59,30 +58,40 @@ export default function PlayGround() {
     />
   })
 
+  const skillWindow = () => {
+    console.log("this is called!");
+    if (selected_unit.selected === false || selected_unit.id === -1) {
+      return "";
+    } else {
+      return <SkillWindow />;
+    }
+  }
+
   const startGame = (e) => {
     console.log("start game is clicked!");
   }
 
   return (
-    <div id="playground">
-      <div id="enemy_ground" className="ground">
+    <div id={styles.playground}>
+      <div id={styles.enemy_ground} className={styles.ground}>
         <span>테스트 123</span>
-        <div id="enemy_batch" className="batch_ground">
+        <div id={styles.enemy_batch} className={styles.batch_ground}>
           {enemyUnits}
         </div>
       </div>
-      <div id="turn_area">
+      <div id={styles.turn_area}>
         <div
-          className="turn_button"
+          className={styles.turn_button}
           onClick={startGame.bind(this)}
         >
           Start
         </div>
       </div>
-      <span id="front_line"></span>
-      <div id="my_ground" className="ground">
+      <span id={styles.front_line}></span>
+      {skillWindow()}
+      <div id={styles.my_ground} className={styles.ground}>
         <span>나의 공간 (My ground)</span>
-        <div id="my_batch" className="batch_ground">
+        <div id={styles.my_batch} className={styles.batch_ground}>
           {myUnits}
         </div>
       </div>
