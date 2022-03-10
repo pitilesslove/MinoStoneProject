@@ -58,14 +58,7 @@ export default function PlayGround() {
     />
   })
 
-  const skillWindow = () => {
-    console.log("this is called!");
-    if (selected_unit.selected === false || selected_unit.id === -1) {
-      return "";
-    } else {
-      return <SkillWindow />;
-    }
-  }
+  const skillWindow = (selected_unit.selected === false || selected_unit.id === -1) ? "" : <SkillWindow />;
 
   const startGame = (e) => {
     console.log("start game is clicked!");
@@ -88,7 +81,7 @@ export default function PlayGround() {
         </div>
       </div>
       <span id={styles.front_line}></span>
-      {skillWindow()}
+      {skillWindow}
       <div id={styles.my_ground} className={styles.ground}>
         <span>나의 공간 (My ground)</span>
         <div id={styles.my_batch} className={styles.batch_ground}>

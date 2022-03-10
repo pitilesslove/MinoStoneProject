@@ -1,10 +1,9 @@
 import React, { Component, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { selectUnitAction } from '../actions';
-import styles from "../css/SkillWindow.module.css"
-import Skill_Icon from "./Skill_Icon";
+import styles from "../css/Skill_Icon.module.css"
 
-export default function SkillWindow(props) {
+export default function Skill_Icon(props) {
 
   const dispatch = useDispatch();
 
@@ -13,12 +12,9 @@ export default function SkillWindow(props) {
   }
 
   return (
-    <div className={styles.Title}
+    <div className={styles.body_circle}
     >
-      <Skill_Icon />
-      <Skill_Icon />
-      <Skill_Icon />
-      <Skill_Icon />
+
     </div>
   );
 
