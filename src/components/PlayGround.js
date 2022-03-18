@@ -8,9 +8,16 @@ import SkillWindow from './SkillWindow';
 
 export default function PlayGround() {
 
-  // const [selected_unit, setSelectedUnit] = useState();
-  const [enemy_units, setEnemyUnits] = useState([]);
-  const [my_units, setMyUnits] = useState([]);
+  // 같이 업데이트 되어야 하는 것들은 하나의 state로 묶는다. (= state는 같이 그려주는 묶음)
+  const [units, setUnits] = useState({
+    myUnits: [],
+    enemyUnits: [],
+  })
+
+  const {
+    myUnits, enemyUnits
+  } = units;
+
   const [loading, setLoading] = useState(true);
 
   const selected_unit = useSelector(state => state.unitReducer.payload);
@@ -29,13 +36,16 @@ export default function PlayGround() {
           console.log(doc.id, " => ", doc.data().name);
           _myUnits.push(doc.data());
         });
-        setMyUnits(_myUnits);
         querySnapshot = await getDocs(enemyUnitsQuery);
         querySnapshot.forEach((doc) => {
           console.log(doc.id, " => ", doc.data().name);
           _enemyUnits.push(doc.data());
         });
-        setEnemyUnits(_enemyUnits);
+        setUnits({
+          ...units,
+          myUnits: _myUnits,
+          enemyUnits: _enemyUnits
+        });
       } catch (e) {
         console.log("[error]");
       } finally {
@@ -49,7 +59,7 @@ export default function PlayGround() {
   // 선택에 대한 이벤트 콜백
   useEffect(() => {
     var _myUnits = [];
-    my_units.map(unit => {
+    myUnits.map(unit => {
       console.log(unit);
       if (unit.id === selected_unit.id && selected_unit.selected === true) {
         unit.selected = true;
@@ -58,11 +68,14 @@ export default function PlayGround() {
       }
       _myUnits.push(unit);
     });
-    setMyUnits(_myUnits);
+    setUnits({
+      ...units,
+      [myUnits]: _myUnits
+    });
   }, [selected_unit]);
 
 
-  const enemyUnits = enemy_units.map(unit => {
+  const drawEnemyUnits = enemyUnits.map(unit => {
     console.log("unit");
     return <Unit
       key={unit.id}
@@ -72,7 +85,7 @@ export default function PlayGround() {
     />
   })
 
-  const myUnits = my_units.map(unit => {
+  const drawMyUnits = myUnits.map(unit => {
     return <Unit
       key={unit.id}
       id={unit.id}
@@ -93,7 +106,7 @@ export default function PlayGround() {
       <div id={styles.enemy_ground} className={styles.ground}>
         <span>적의 공간 (Enemy's ground)</span>
         <div id={styles.enemy_batch} className={styles.batch_ground}>
-          {enemyUnits}
+          {drawEnemyUnits}
         </div>
       </div>
       <div id={styles.turn_area}>
@@ -109,7 +122,7 @@ export default function PlayGround() {
       <div id={styles.my_ground} className={styles.ground}>
         <span>나의 공간 (My ground)</span>
         <div id={styles.my_batch} className={styles.batch_ground}>
-          {myUnits}
+          {drawMyUnits}
         </div>
       </div>
     </div>
