@@ -5,6 +5,7 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from '../App'
 import Unit from './Unit'
 import SkillWindow from './SkillWindow';
+import Skill_InformationWindow from './Skill_InformationWindow';
 
 export default function PlayGround() {
 
@@ -21,7 +22,9 @@ export default function PlayGround() {
   const [loading, setLoading] = useState(true);
 
   const selected_unit = useSelector(state => state.unitReducer.payload);
+  const hovered_skill = useSelector(state => state.skillReducer.payload);
   console.log("selected_unit : ", selected_unit);
+  console.log("hovered_skill : ", hovered_skill);
 
   useEffect(() => {
     const getDocument = async () => {
@@ -74,6 +77,12 @@ export default function PlayGround() {
     });
   }, [selected_unit]);
 
+  // 스킬 아이콘에 대한 이벤트 콜백
+  useEffect(() => {
+    // 아직 없음.
+
+  }, [hovered_skill]);
+
 
   const drawEnemyUnits = enemyUnits.map(unit => {
     console.log("unit");
@@ -96,6 +105,7 @@ export default function PlayGround() {
   })
 
   const skillWindow = (selected_unit.selected === false || selected_unit.id === -1) ? "" : <SkillWindow />;
+  const skillInformationWindow = hovered_skill == null ? "" : <Skill_InformationWindow text={hovered_skill.information} />;
 
   const startGame = (e) => {
     console.log("start game is clicked!");
@@ -118,6 +128,7 @@ export default function PlayGround() {
         </div>
       </div>
       <span id={styles.front_line}></span>
+      {skillInformationWindow}
       {skillWindow}
       <div id={styles.my_ground} className={styles.ground}>
         <span>나의 공간 (My ground)</span>
