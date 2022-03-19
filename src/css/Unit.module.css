@@ -1,8 +1,8 @@
 @import 'common.css';
 
 .unit {
-    width:70px;
-    height: 60px;
+    width:60px;
+    margin-left: 10px;
 }
 
 .unit:hover {
@@ -18,7 +18,7 @@
     margin: 0 auto;
     width: 40px;
     height: 50px;
-    border: 1px solid rgb(15, 9, 34);
+    outline: 1px solid rgb(15, 9, 34);
     background-color: rgb(155, 153, 154);
     border-radius: 45%;
 }
@@ -26,7 +26,7 @@
 .life_circle_wrapper {
     position: absolute;
     top : 30px;
-    left: 28px;
+    left: 30px;
 }
 
 .life_circle {
@@ -34,7 +34,7 @@
     width: 20px;
     height: 20px;
     background-color: rgb(201, 66, 66);
-    border: 1px solid black;
+    outline: 1px solid black;
     border-radius: 50%;
     text-align: center;
 }
@@ -51,7 +51,7 @@
     width: 20px;
     height: 20px;
     background-color: rgb(184, 143, 218);
-    border: 1px solid black;
+    outline: 1px solid black;
     border-radius: 50%;
     text-align: center;
 }

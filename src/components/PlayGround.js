@@ -105,7 +105,7 @@ export default function PlayGround() {
   })
 
   const skillWindow = (selected_unit.selected === false || selected_unit.id === -1) ? "" : <SkillWindow />;
-  const skillInformationWindow = hovered_skill == null ? "" : <Skill_InformationWindow text={hovered_skill.information} />;
+  const skillInformationWindow = (hovered_skill == null || hovered_skill.id === -1) ? "" : <Skill_InformationWindow text={hovered_skill.information} />;
 
   const startGame = (e) => {
     console.log("start game is clicked!");

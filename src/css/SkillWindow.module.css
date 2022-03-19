@@ -6,7 +6,7 @@
 	transform: translateX(-50%);
 	width: 40%;
 	height: 70px;
-	border: 2px solid black;
+	outline: 2px solid black;
 	
 	display: flex;
 	justify-content: center;
