@@ -6,6 +6,7 @@ import { db } from '../App'
 import Unit from './Unit'
 import SkillWindow from './SkillWindow';
 import Skill_InformationWindow from './Skill_InformationWindow';
+import SkillTargetingArrow from './SkillTargetingArrow';
 
 export default function PlayGround() {
 
@@ -20,11 +21,11 @@ export default function PlayGround() {
   } = units;
 
   const [loading, setLoading] = useState(true);
+  const [isSkillSelected, setSkillSelected] = useState(false);
 
   const selected_unit = useSelector(state => state.unitReducer.payload);
   const hovered_skill = useSelector(state => state.skillReducer.payload);
-  console.log("selected_unit : ", selected_unit);
-  console.log("hovered_skill : ", hovered_skill);
+  const selected_skill = useSelector(state => state.skillReducer.payload);
 
   useEffect(() => {
     const getDocument = async () => {
@@ -83,6 +84,14 @@ export default function PlayGround() {
 
   }, [hovered_skill]);
 
+  // 스킬 선택되면 올라오는 이벤트. 타게팅 화살표를 그려줘야 한다.
+  useEffect(() => {
+    if (selected_skill.state === "SELECTED") {
+      setSkillSelected(true);
+    }
+  }, [selected_skill]);
+
+
 
   const drawEnemyUnits = enemyUnits.map(unit => {
     console.log("unit");
@@ -105,7 +114,8 @@ export default function PlayGround() {
   })
 
   const skillWindow = (selected_unit.selected === false || selected_unit.id === -1) ? "" : <SkillWindow />;
-  const skillInformationWindow = (hovered_skill == null || hovered_skill.id === -1) ? "" : <Skill_InformationWindow text={hovered_skill.information} />;
+  const skillInformationWindow = (hovered_skill.state === "HOVER" || hovered_skill.state === "SELECTED") ? <Skill_InformationWindow text={hovered_skill.information} /> : "";
+  const skillTargetingArrow = isSkillSelected === false ? "" : <SkillTargetingArrow />;
 
   const startGame = (e) => {
     console.log("start game is clicked!");
@@ -129,6 +139,7 @@ export default function PlayGround() {
       </div>
       <span id={styles.front_line}></span>
       {skillInformationWindow}
+      {skillTargetingArrow}
       {skillWindow}
       <div id={styles.my_ground} className={styles.ground}>
         <span>나의 공간 (My ground)</span>

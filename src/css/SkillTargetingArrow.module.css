@@ -1,0 +1,22 @@
+@import 'common.css';
+
+.Body{
+	position: fixed;
+	width: 20px;
+    height: 100px;
+	outline: 1px solid black;
+	background-color: #eee;
+}
+
+.Body::before {
+	content: "";
+	position: absolute;
+    top: 3px;
+    left: 50%;
+    width: 15px;
+    height: 15px;
+	border: 1px solid black;
+	border-right: none;
+    border-bottom: none;
+    transform: translateX(-50%) rotate(45deg);
+}

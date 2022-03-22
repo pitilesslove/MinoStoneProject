@@ -2,7 +2,7 @@ import {
     SELECT_UNIT,
     ADD_UNIT_READY,
     DRAW_SKILL_INFORMATION_WINDOW,
-    REMOVE_SKILL_INFORMATION_WINFOW
+    SELECT_SKILL,
 } from '../constants/ActionTypes'
 
 export const selectUnitAction = (unit) => {
@@ -21,10 +21,18 @@ export const addUnitReadyAction = (unit) => {
     }
 }
 
-export const drawSkillInformationWindowAction = (unit) => {
-    console.log("drawSkillInformationWindowAction", unit);
+export const drawSkillInformationWindowAction = (skill) => {
+    console.log("drawSkillInformationWindowAction", skill);
     return {
         type: DRAW_SKILL_INFORMATION_WINDOW,
-        payload: unit
+        payload: skill
+    }
+}
+
+export const selectSkillAction = (skill) => {
+    console.log("selectSkillAction", skill);
+    return {
+        type: SELECT_SKILL,
+        payload: skill
     }
 }
